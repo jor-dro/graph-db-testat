@@ -75,6 +75,7 @@ node *node_add_property(node *n, char *property_name, char *property_type, void 
     PROPERTY_T type;
     FLEXIBLE_T value;
     /**
+     * DONE
      * TODO (EASY)
      * Expand if else with all other
      * types.
@@ -88,6 +89,15 @@ node *node_add_property(node *n, char *property_name, char *property_type, void 
     } else if (strncmp(property_type, "FLOAT", sizeof("FLOAT")) == 0) {
         type = PROP_FLOAT_T;
         (value.f) = (float *) property_value;
+    } else if (strncmp(property_type, "CHAR", sizeof("CHAR")) == 0) {
+        type = PROP_CHAR_T;
+        (value.c) = (char *) property_value;
+    } else if (strncmp(property_type, "DOUBLE", sizeof("DOUBLE")) == 0) {
+        type = PROP_DOUBLE_T;
+        (value.d) = (double *) property_value;
+    } else if (strncmp(property_type, "BOOL", sizeof("BOOL")) == 0) {
+        type = PROP_BOOL_T;
+        (value.b) = (bool *) property_value;
     }
     n->property_names[n->property_size] = property_name;
     n->property_types[n->property_size] = type;
